@@ -49,7 +49,7 @@ function Index() {
               decoding="async"
             />
           </a>
-          <nav className="hidden gap-7 font-mono text-sm uppercase tracking-wide text-ink md:flex">
+          <nav className="hidden gap-6 font-brand text-base tracking-wide text-ink md:flex md:text-lg">
             <a href="#packaging" className="hover:text-garnet">
               {t(dict.nav.packaging)}
             </a>
@@ -60,7 +60,7 @@ function Index() {
               {t(dict.nav.calc)}
             </a>
           </nav>
-          <div className="flex border border-garnet font-mono text-sm" role="group" aria-label="Language">
+          <div className="flex border border-garnet font-brand text-base" role="group" aria-label="Language">
             {(["ka", "en"] as Lang[]).map((l) => (
               <button
                 key={l}
