@@ -1,8 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { X } from "lucide-react";
-import { AsciiLoader } from "@/components/AsciiLoader";
-import { AsciiHero } from "@/components/AsciiHero";
+import { BrandHero } from "@/components/BrandHero";
+import { PackagingVisual } from "@/components/PackagingVisual";
 import { useCountUp } from "@/hooks/use-count-up";
 import { dict, days, menu, tagLabels, districts, type Lang, type Dish } from "@/lib/content";
 import { quote, volumeDiscount, type Frequency } from "@/lib/pricing";
@@ -10,13 +10,13 @@ import { quote, volumeDiscount, type Frequency } from "@/lib/pricing";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "სუფრა Dispatch — Corporate Georgian Lunch Catering, Tbilisi" },
+      { title: "სუფრა — ნუნუკა · Corporate Georgian Lunch Catering, Tbilisi" },
       {
         name: "description",
         content:
           "Honest Georgian daily lunches for corporate teams of 15–500+ in Tbilisi. Hot, on time, kraft packaging.",
       },
-      { property: "og:title", content: "სუფრა Dispatch — Corporate Catering Tbilisi" },
+      { property: "og:title", content: "სუფრა — ნუნუკა · Corporate Catering Tbilisi" },
       {
         property: "og:description",
         content: "Georgian feasting with surgical kitchen rigor for Tbilisi offices.",
@@ -36,33 +36,39 @@ function Index() {
   const [lead, setLead] = useState(false);
 
   return (
-    <div className="min-h-screen bg-kraft paper-grain">
-      <AsciiLoader />
-      <header className="sticky top-0 z-40 border-b border-garnet bg-cream/95 backdrop-blur-[2px]">
-        <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-4 md:py-5">
-          <a href="#top" className="font-display text-2xl font-black text-garnet md:text-3xl">
-            სუფრა
-            <span className="font-mono text-xs font-normal tracking-[0.16em] text-ink md:text-sm">
-              {" "}
-              /DISPATCH
-            </span>
+    <div className="min-h-screen bg-kraft">
+      <header className="sticky top-0 z-40 border-b border-garnet/40 bg-black">
+        <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-3 md:py-4">
+          <a href="#top" className="flex items-center gap-2.5 md:gap-3">
+            <img
+              src="/brand/pomi.png"
+              alt=""
+              className="h-10 w-auto object-contain md:h-12"
+              width={120}
+              height={48}
+              decoding="async"
+            />
+            <span className="font-display text-2xl font-black text-cream md:text-3xl">სუფრა</span>
           </a>
-          <nav className="hidden gap-8 font-mono text-sm uppercase tracking-wide md:flex">
-            <a href="#menu" className="hover:text-garnet">
+          <nav className="hidden gap-7 font-mono text-sm uppercase tracking-wide text-cream/85 md:flex">
+            <a href="#packaging" className="hover:text-cream">
+              {t(dict.nav.packaging)}
+            </a>
+            <a href="#menu" className="hover:text-cream">
               {t(dict.nav.menu)}
             </a>
-            <a href="#calc" className="hover:text-garnet">
+            <a href="#calc" className="hover:text-cream">
               {t(dict.nav.calc)}
             </a>
           </nav>
-          <div className="flex border border-garnet font-mono text-sm" role="group" aria-label="Language">
+          <div className="flex border border-cream/50 font-mono text-sm" role="group" aria-label="Language">
             {(["ka", "en"] as Lang[]).map((l) => (
               <button
                 key={l}
                 type="button"
                 onClick={() => setLang(l)}
                 aria-pressed={lang === l}
-                className={`px-4 py-2 uppercase transition-colors ${lang === l ? "bg-garnet text-cream" : "bg-cream text-garnet hover:bg-kraft"}`}
+                className={`px-4 py-2 uppercase transition-colors ${lang === l ? "bg-garnet text-cream" : "bg-transparent text-cream hover:bg-cream/10"}`}
               >
                 {l}
               </button>
@@ -71,29 +77,23 @@ function Index() {
         </div>
       </header>
 
-      <main id="top">
-        <AsciiHero
-          brand={
-            <p className="font-display text-4xl font-black leading-none text-garnet sm:text-5xl md:text-6xl">
-              სუფრა
-              <span className="mt-2 block font-mono text-sm font-normal tracking-[0.22em] text-ink md:text-base">
-                /DISPATCH
-              </span>
-            </p>
-          }
-          headline={t(dict.h1)}
-          support={t(dict.sub)}
-          primaryCta={
-            <button type="button" onClick={() => setLead(true)} className="btn-ink">
-              {t(dict.cta1)}
-            </button>
-          }
-          secondaryCta={
-            <a href="#menu" className="btn-paper">
-              {t(dict.cta2)}
-            </a>
-          }
-        />
+      <main>
+        <BrandHero />
+
+        {/* CTAs sit below the logo-only hero viewport */}
+        <section className="border-b border-garnet bg-black">
+          <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-3 px-5 py-5 md:justify-between">
+            <p className="hidden max-w-md text-sm text-cream/75 md:block">{t(dict.sub)}</p>
+            <div className="flex flex-wrap gap-3">
+              <button type="button" onClick={() => setLead(true)} className="btn-ink">
+                {t(dict.cta1)}
+              </button>
+              <a href="#menu" className="btn-paper">
+                {t(dict.cta2)}
+              </a>
+            </div>
+          </div>
+        </section>
 
         <section className="border-b border-garnet bg-garnet text-cream">
           <div className="mx-auto flex max-w-6xl flex-col gap-3 px-5 py-3.5 font-mono text-xs md:flex-row md:items-center md:justify-between">
@@ -112,6 +112,7 @@ function Index() {
           </div>
         </section>
 
+        <PackagingVisual lang={lang} t={t} />
         <MenuSection lang={lang} t={t} />
         <Calculator lang={lang} t={t} onLead={() => setLead(true)} />
       </main>
