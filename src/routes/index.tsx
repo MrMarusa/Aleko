@@ -39,16 +39,15 @@ function Index() {
     <div className="min-h-screen bg-kraft">
       <header className="sticky top-0 z-40 border-b border-garnet bg-kraft/95 backdrop-blur-[2px]">
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-3 md:py-4">
-          <a href="#top" className="flex items-center gap-2.5 md:gap-3">
+          <a href="#top" className="flex items-center gap-2.5 md:gap-3" aria-label="ნუნუკა">
             <img
               src="/brand/pomi.png"
-              alt=""
+              alt="ნუნუკა"
               className="h-10 w-auto object-contain md:h-12"
               width={120}
               height={48}
               decoding="async"
             />
-            <span className="font-brand text-2xl text-garnet md:text-3xl">ნუნუკა</span>
           </a>
           <nav className="hidden gap-7 font-mono text-sm uppercase tracking-wide text-ink md:flex">
             <a href="#packaging" className="hover:text-garnet">
