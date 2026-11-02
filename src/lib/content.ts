@@ -68,10 +68,11 @@ export const menu: Dish[][] = [
 export const districts = ["Vake", "Saburtalo", "Mtatsminda", "Vera", "Didube", "Isani", "Nadzaladevi", "Krtsanisi"];
 
 export const dict = {
+  // KA nav uses Latin transliteration (Barata has no Georgian glyphs); EN is translated English.
   nav: {
-    menu: { ka: "მენიუ", en: "Menu" },
-    packaging: { ka: "შეფუთვა", en: "Packaging" },
-    calc: { ka: "კალკულატორი", en: "Calculator" },
+    menu: { ka: "meniu", en: "Menu" },
+    packaging: { ka: "shefutva", en: "Packaging" },
+    calc: { ka: "kalkulatori", en: "Calculator" },
   },
   badge: { ka: "გარეთ ატლასი • შიგნით ათასი", en: "Satin outside • A thousand within" },
   h1: { ka: "ქართული სუფრა, საათის სიზუსტით", en: "Georgian lunch, kitchen-clock precision" },
