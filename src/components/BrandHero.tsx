@@ -3,7 +3,7 @@ export function BrandHero() {
   return (
     <section
       id="top"
-      className="flex min-h-[calc(100svh-4.5rem)] items-center justify-center bg-black px-6 py-10 md:min-h-[calc(100svh-5rem)]"
+      className="flex min-h-[calc(100svh-4.5rem)] items-center justify-center bg-cream paper-grain px-6 py-10 md:min-h-[calc(100svh-5rem)]"
       aria-label="ნუნუკა"
     >
       <img

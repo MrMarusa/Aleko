@@ -37,7 +37,7 @@ function Index() {
 
   return (
     <div className="min-h-screen bg-kraft">
-      <header className="sticky top-0 z-40 border-b border-garnet/40 bg-black">
+      <header className="sticky top-0 z-40 border-b border-garnet bg-cream/95 backdrop-blur-[2px]">
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-3 md:py-4">
           <a href="#top" className="flex items-center gap-2.5 md:gap-3">
             <img
@@ -48,27 +48,27 @@ function Index() {
               height={48}
               decoding="async"
             />
-            <span className="font-display text-2xl font-black text-cream md:text-3xl">სუფრა</span>
+            <span className="font-display text-2xl font-black text-garnet md:text-3xl">სუფრა</span>
           </a>
-          <nav className="hidden gap-7 font-mono text-sm uppercase tracking-wide text-cream/85 md:flex">
-            <a href="#packaging" className="hover:text-cream">
+          <nav className="hidden gap-7 font-mono text-sm uppercase tracking-wide text-ink md:flex">
+            <a href="#packaging" className="hover:text-garnet">
               {t(dict.nav.packaging)}
             </a>
-            <a href="#menu" className="hover:text-cream">
+            <a href="#menu" className="hover:text-garnet">
               {t(dict.nav.menu)}
             </a>
-            <a href="#calc" className="hover:text-cream">
+            <a href="#calc" className="hover:text-garnet">
               {t(dict.nav.calc)}
             </a>
           </nav>
-          <div className="flex border border-cream/50 font-mono text-sm" role="group" aria-label="Language">
+          <div className="flex border border-garnet font-mono text-sm" role="group" aria-label="Language">
             {(["ka", "en"] as Lang[]).map((l) => (
               <button
                 key={l}
                 type="button"
                 onClick={() => setLang(l)}
                 aria-pressed={lang === l}
-                className={`px-4 py-2 uppercase transition-colors ${lang === l ? "bg-garnet text-cream" : "bg-transparent text-cream hover:bg-cream/10"}`}
+                className={`px-4 py-2 uppercase transition-colors ${lang === l ? "bg-garnet text-cream" : "bg-cream text-garnet hover:bg-kraft"}`}
               >
                 {l}
               </button>
@@ -81,9 +81,9 @@ function Index() {
         <BrandHero />
 
         {/* CTAs sit below the logo-only hero viewport */}
-        <section className="border-b border-garnet bg-black">
+        <section className="border-b border-garnet bg-cream">
           <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-3 px-5 py-5 md:justify-between">
-            <p className="hidden max-w-md text-sm text-cream/75 md:block">{t(dict.sub)}</p>
+            <p className="hidden max-w-md text-sm text-ink/80 md:block">{t(dict.sub)}</p>
             <div className="flex flex-wrap gap-3">
               <button type="button" onClick={() => setLead(true)} className="btn-ink">
                 {t(dict.cta1)}
