@@ -2,6 +2,14 @@
 @source "../src";
 @import "tw-animate-css";
 
+@font-face {
+  font-family: "Barata";
+  src: url("/fonts/barata.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
@@ -34,6 +42,7 @@
   --color-garnet: var(--garnet);
   --color-ink: var(--ink);
   --font-display: "Noto Serif Georgian", "Noto Serif", serif;
+  --font-brand: "Barata", "Noto Serif Georgian", serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
   --font-sans: "Space Grotesk", "Noto Sans Georgian", sans-serif;
 }
@@ -85,6 +94,10 @@
     outline: 2px solid var(--garnet);
     outline-offset: 3px;
   }
+}
+
+@utility font-brand {
+  font-family: var(--font-brand);
 }
 
 @utility btn-ink {

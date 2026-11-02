@@ -10,13 +10,13 @@ import { quote, volumeDiscount, type Frequency } from "@/lib/pricing";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "სუფრა — ნუნუკა · Corporate Georgian Lunch Catering, Tbilisi" },
+      { title: "ნუნუკა · Corporate Georgian Lunch Catering, Tbilisi" },
       {
         name: "description",
         content:
           "Honest Georgian daily lunches for corporate teams of 15–500+ in Tbilisi. Hot, on time, kraft packaging.",
       },
-      { property: "og:title", content: "სუფრა — ნუნუკა · Corporate Catering Tbilisi" },
+      { property: "og:title", content: "ნუნუკა · Corporate Catering Tbilisi" },
       {
         property: "og:description",
         content: "Georgian feasting with surgical kitchen rigor for Tbilisi offices.",
@@ -37,7 +37,7 @@ function Index() {
 
   return (
     <div className="min-h-screen bg-kraft">
-      <header className="sticky top-0 z-40 border-b border-garnet bg-cream/95 backdrop-blur-[2px]">
+      <header className="sticky top-0 z-40 border-b border-garnet bg-kraft/95 backdrop-blur-[2px]">
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-3 md:py-4">
           <a href="#top" className="flex items-center gap-2.5 md:gap-3">
             <img
@@ -48,7 +48,7 @@ function Index() {
               height={48}
               decoding="async"
             />
-            <span className="font-display text-2xl font-black text-garnet md:text-3xl">სუფრა</span>
+            <span className="font-brand text-2xl text-garnet md:text-3xl">ნუნუკა</span>
           </a>
           <nav className="hidden gap-7 font-mono text-sm uppercase tracking-wide text-ink md:flex">
             <a href="#packaging" className="hover:text-garnet">
@@ -68,7 +68,7 @@ function Index() {
                 type="button"
                 onClick={() => setLang(l)}
                 aria-pressed={lang === l}
-                className={`px-4 py-2 uppercase transition-colors ${lang === l ? "bg-garnet text-cream" : "bg-cream text-garnet hover:bg-kraft"}`}
+                className={`px-4 py-2 uppercase transition-colors ${lang === l ? "bg-garnet text-cream" : "bg-kraft text-garnet hover:bg-cream"}`}
               >
                 {l}
               </button>
@@ -78,22 +78,18 @@ function Index() {
       </header>
 
       <main>
-        <BrandHero />
-
-        {/* CTAs sit below the logo-only hero viewport */}
-        <section className="border-b border-garnet bg-cream">
-          <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-3 px-5 py-5 md:justify-between">
-            <p className="hidden max-w-md text-sm text-ink/80 md:block">{t(dict.sub)}</p>
-            <div className="flex flex-wrap gap-3">
-              <button type="button" onClick={() => setLead(true)} className="btn-ink">
-                {t(dict.cta1)}
-              </button>
-              <a href="#menu" className="btn-paper">
-                {t(dict.cta2)}
-              </a>
-            </div>
-          </div>
-        </section>
+        <BrandHero
+          primaryCta={
+            <button type="button" onClick={() => setLead(true)} className="btn-ink">
+              {t(dict.cta1)}
+            </button>
+          }
+          secondaryCta={
+            <a href="#menu" className="btn-paper">
+              {t(dict.cta2)}
+            </a>
+          }
+        />
 
         <section className="border-b border-garnet bg-garnet text-cream">
           <div className="mx-auto flex max-w-6xl flex-col gap-3 px-5 py-3.5 font-mono text-xs md:flex-row md:items-center md:justify-between">
@@ -124,7 +120,7 @@ function Index() {
             {DIV}
           </div>
           <div className="mt-4 flex flex-col justify-between gap-2 text-ink md:flex-row">
-            <span>სუფრა DISPATCH · TBILISI · KITCHEN 06:00–14:00 · 7/7</span>
+            <span>ნუნუკა · TBILISI · KITCHEN 06:00–14:00 · 7/7</span>
             <span>© 2026</span>
           </div>
         </div>

@@ -1,9 +1,16 @@
-/** Full-viewport black hero — only the ნუნუკა brow mark, centered. */
-export function BrandHero() {
+import type { ReactNode } from "react";
+
+type Props = {
+  primaryCta: ReactNode;
+  secondaryCta: ReactNode;
+};
+
+/** Kraft hero — centered ნუნუკა brow mark with CTAs directly under the logo. */
+export function BrandHero({ primaryCta, secondaryCta }: Props) {
   return (
     <section
       id="top"
-      className="flex min-h-[calc(100svh-4.5rem)] items-center justify-center bg-cream paper-grain px-6 py-10 md:min-h-[calc(100svh-5rem)]"
+      className="flex min-h-[calc(100svh-4.5rem)] flex-col items-center justify-center gap-8 bg-kraft paper-grain px-6 py-10 md:min-h-[calc(100svh-5rem)] md:gap-10"
       aria-label="ნუნუკა"
     >
       <img
@@ -15,6 +22,7 @@ export function BrandHero() {
         decoding="async"
         fetchPriority="high"
       />
+      <div className="flex flex-wrap items-center justify-center gap-3">{primaryCta}{secondaryCta}</div>
     </section>
   );
 }
