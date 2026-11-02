@@ -1,22 +1,20 @@
 import { useEffect, useState } from "react";
-import { ASCII_ART } from "@/lib/ascii-art";
-
-const COLS = 335;
-const ROWS = 151;
+import { ASCII_ART_COLORED_HTML } from "@/lib/ascii-art-colored";
 
 export function AsciiLoader() {
   const [show, setShow] = useState(false);
   const [leaving, setLeaving] = useState(false);
   const [pct, setPct] = useState(0);
-  const [scale, setScale] = useState(1);
+  const [scale, setScale] = useState(0.28);
 
   useEffect(() => {
     if (sessionStorage.getItem("seen-loader")) return;
     setShow(true);
     const fit = () => {
-      const w = Math.min(window.innerWidth - 48, 900);
-      const h = window.innerHeight * 0.58;
-      setScale(Math.min(w / (COLS * 6), h / (ROWS * 12)));
+      const w = Math.min(window.innerWidth - 48, 920);
+      const h = window.innerHeight * 0.55;
+      // Approximate natural canvas ~ 335*6 x 151*12 from legacy metrics; colored art is similar width
+      setScale(Math.min(w / 2010, h / 1812, 0.55));
     };
     fit();
     window.addEventListener("resize", fit);
@@ -49,18 +47,14 @@ export function AsciiLoader() {
       aria-live="polite"
       aria-label="Printing dispatch"
     >
-      <div
-        className="border border-garnet bg-kraft shadow-[6px_6px_0_var(--ink)]"
-        style={{ width: COLS * 6 * scale + 28, height: ROWS * 12 * scale + 28 }}
-      >
-        <div className="h-full overflow-hidden border border-dashed border-garnet/40 p-2.5">
+      <div className="overflow-hidden border border-garnet bg-kraft shadow-[6px_6px_0_var(--ink)]">
+        <div className="max-h-[58vh] max-w-[min(92vw,900px)] overflow-hidden p-3">
           <pre
             aria-hidden
-            className="m-0 origin-top-left animate-print font-mono text-garnet"
-            style={{ fontSize: 10, lineHeight: "12px", transform: `scale(${scale})`, width: COLS * 6 }}
-          >
-            {ASCII_ART}
-          </pre>
+            className="m-0 origin-top-left animate-print font-mono"
+            style={{ fontSize: 10, lineHeight: 1.2, transform: `scale(${scale})`, width: "fit-content" }}
+            dangerouslySetInnerHTML={{ __html: ASCII_ART_COLORED_HTML }}
+          />
         </div>
       </div>
       <div className="space-y-2 text-center font-mono text-xs text-ink">

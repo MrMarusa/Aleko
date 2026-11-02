@@ -213,11 +213,32 @@
   animation: steam 4.5s ease-in-out infinite;
 }
 
+@keyframes calc-pulse {
+  0% {
+    box-shadow: 4px 4px 0 var(--ink);
+  }
+  40% {
+    box-shadow: 4px 4px 0 var(--garnet);
+    outline: 1px solid color-mix(in oklab, var(--garnet) 35%, transparent);
+  }
+  100% {
+    box-shadow: 4px 4px 0 var(--ink);
+  }
+}
+
+.calc-panel {
+  transition: box-shadow 0.2s ease;
+}
+.calc-flash {
+  animation: calc-pulse 0.38s ease-out;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .animate-print,
   .animate-loader-out,
   .animate-hero-rise,
-  .animate-steam {
+  .animate-steam,
+  .calc-flash {
     animation: none !important;
   }
   .animate-loader-out {
